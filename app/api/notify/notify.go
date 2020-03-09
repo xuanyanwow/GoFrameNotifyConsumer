@@ -49,7 +49,7 @@ func PushQueue(r *ghttp.Request) {
 	}
 
 	// 校验参数
-	url := r.PostFormValue("url")
+	url := r.Get("url")
 	data := r.Get("data")
 
 	if e := gvalid.Check(url, "url", nil); e != nil {
@@ -60,7 +60,7 @@ func PushQueue(r *ghttp.Request) {
 	queue := di.Get("queue_normal").(*gqueue.Queue)
 
 	taskData := notify.TaskData{
-		Url:        url,
+		Url:        url.(string),
 		Data:       data,
 		TryTime:    0,
 		NextDoTime: gtime.Timestamp(),

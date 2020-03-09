@@ -50,7 +50,8 @@ func doJob(queue *gqueue.Queue, name string, nextQueue *gqueue.Queue, data TaskD
 	responseContext := ""
 
 	if response, err := ghttp.Post(data.Url, data.Data); err != nil {
-		panic(err)
+		afterJob(name, data, false, err.Error())
+		return
 	} else {
 		defer response.Close()
 		responseContext = response.ReadAllString()
