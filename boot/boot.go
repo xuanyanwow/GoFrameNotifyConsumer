@@ -16,13 +16,9 @@ func init() {
 	di.Set("queue_resend3", gqueue.New())
 
 	// 启动时数据恢复
-
 	// 定时数据落地
 
 	// ================= 方案2 其他队列如redis等 go服务挂了不会影响数据储存  ===============
-
-
-
 
 	// 定时生产者
 	//gtimer.AddSingleton(10000*time.Millisecond, func() {

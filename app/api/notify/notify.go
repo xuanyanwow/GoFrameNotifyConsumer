@@ -7,6 +7,7 @@ import (
 	"github.com/gogf/gf/container/gqueue"
 	"github.com/gogf/gf/net/ghttp"
 	"github.com/gogf/gf/os/gtime"
+	"github.com/gogf/gf/util/gvalid"
 )
 
 // 查询队列剩余数量，要重启服务之前应该先关闭添加入口，然后查询队列剩余数量 为0 后 间隔3s（防止有任务消费一半） 再stop服务
@@ -50,6 +51,11 @@ func PushQueue(r *ghttp.Request) {
 	// 校验参数
 	url := r.PostFormValue("url")
 	data := r.Get("data")
+
+	if e := gvalid.Check(url, "url", nil); e != nil {
+		r.Response.Writeln(e.String())
+		return
+	}
 
 	queue := di.Get("queue_normal").(*gqueue.Queue)
 
