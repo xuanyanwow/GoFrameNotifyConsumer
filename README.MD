@@ -19,7 +19,7 @@ app/cron/notify/consumer.go 设置每次队列失败后增加的间隔
 ## 默认配置
 
 默认失败4次就丢弃，每次间隔为：{0, 5, 10, 30}
-默认推送的url返回"success"即为成功，若要修改，在app/cron/notify/consumer.go的`doJob`方法中找到相关逻辑修改 `默认推送的url返回"success"即为成功，若要修改，在app/cron/notify/consumer.go的`doJob`方法中找到相关逻辑修改 ``
+默认推送的url返回"success"即为成功，若要修改，在app/cron/notify/consumer.go的`doJob`方法中找到相关逻辑修改 `if responseContext != "success" {`
 `
 
 ## 如何新增次数
