@@ -26,3 +26,12 @@
         Path   = "/tmp/log/gf-app/sql"
         Level  = "all"
         Stdout = true
+
+[compiler]
+    name     = "siam-app"
+    version  = "1.0.0"
+    arch     = "amd64"
+    system   = "linux,windows"
+    output   = ""
+    path     = "./bin"
+    extra    = "-ldflags \"-s -w\""
